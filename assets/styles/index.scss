@@ -1,0 +1,35 @@
+$icon-font-path:     '~bootstrap-sass/assets/fonts/bootstrap/';
+@import '~bootstrap-sass/assets/stylesheets/bootstrap';
+
+body {
+  font-family:       "Roboto", Arial, sans-serif;
+margin:            0 auto;
+text-align:        center;
+margin-top:        50px;
+color:             #FFF;
+text-shadow:       -1px -1px #333;
+background:        url("https://ak8.picdn.net/shutterstock/videos/14534440/thumb/1.jpg?i10c=img.resize(height:160)");
+
+  h1 {
+    font-family:       'EB Garamond', serif;
+  }
+
+  table {
+    border-collapse: collapse;
+    width:           450px;
+    margin:          0 auto;
+    height:          450px;
+    font-family:     'EB Garamond', serif;
+
+    td {
+      width:50px;
+      height:50px;
+      border:1px solid #555;
+      cursor:pointer;
+      background-color:rgba(192,192,192,0.3);
+
+
+
+}
+}
+}
