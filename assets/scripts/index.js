@@ -1,11 +1,10 @@
 
-
 $(document).ready(function(){
     var turnCount = 0;
 
       $('#board').find('td').on('click', function(){
 if (check($(this).text()))
-{  // check($(this).text());
+{  // check($(this).text());     // update game here
 
             if (turnCount % 2 === 0){
               $(this).text('X');
@@ -58,14 +57,14 @@ if (check($(this).text()))
                     $('#newGame').removeClass('invisible');
                 }
             }
-        }
+          }
 
        //middle column check
         if ($('#board').find('#2').text() !== ''){
             if ($('#board').find('#2').text() == $('#board').find('#5').text()) {
                 if ($('#board').find('#2').text() == $('#8').text()) {
                     alert('Game over! '+player+' is the winner!');
-                    $('#newGame').removeClass('invisible');
+    $('#newGame').removeClass('invisible');
                 }
             }
         }

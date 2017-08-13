@@ -29,7 +29,14 @@ background:        url("https://ak8.picdn.net/shutterstock/videos/14534440/thumb
       background-color:rgba(192,192,192,0.3);
 
 
+}
 
+#grid-container {
+  text-align: center;
+  width: 600px;
+  & .box {
+    padding: 50px;
+  }
 }
 }
 }
