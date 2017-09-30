@@ -1,3 +1,17 @@
+'use strict'
+
+const setAPIOrigin = require('../../lib/set-api-origin')
+const config = require('./config')
+const events = require('./games/events.js')
+
+$(() => {
+  setAPIOrigin(location, config)
+})
+
+// On document ready
+$(() => {
+  events.addHandlers()
+})
 
 $(document).ready(function(){
     var turnCount = 0;
