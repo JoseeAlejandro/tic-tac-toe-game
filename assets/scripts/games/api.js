@@ -1,44 +1,35 @@
 'use strict'
-const app = require('../app')
+const app = require('../app');
 // const getFormFields = require('../../../lib/get-form-fields.js');
 
-// authApi.signUp(authUi.success, authUi.failure, data);
+//authApi.signUp(authUi.success, authUi.failure, data);
 // data -> viene  del evento form submit
+const signUp = function(data){
+  console.log(data);
+  return $.ajax({
+    url: app.host + '/sign-up/',
+    method: 'POST',
+    data: {
+      'credentials': {
+        'email': data.credentials.email,
+        'password': data.credentials.password,
+        'password_confirmation': data.credentials.password
+      }
+    }
+  })
+}
 
-// Sign Up
-const signUp = function (data) {
+const signIn = function(data) {
   console.log(data)
   return $.ajax({
-    url: app.host + '/sign-up',
+    url: app.host + '/sign-in/',
     method: 'POST',
     data
   })
 }
 
-// Sign In
-const signIn = function (data) {
+const signOut = function(data) {
   console.log(data)
-  return $.ajax({
-    url: app.host + '/sign-in',
-    method: 'POST',
-    data
-  })
-}
-
-// Change Password
-const changePassword = function (data) {
-  return $.ajax({
-    method: 'PATCH',
-    url: app.host + '/change-password/' + app.user.id,
-    headers: {
-      Authorization: 'Token token=' + app.user.token
-    },
-    data: data
-  })
-}
-
-// Sign Out
-const signOut = function () {
   return $.ajax({
     method: 'DELETE',
     url: app.host + '/sign-out/' + app.user.id,
@@ -48,7 +39,25 @@ const signOut = function () {
   })
 }
 
-const create = function (data) {
+const changePassword = function(data) {
+  console.log(data.credentials.old)
+  console.log(data.credentials.new)
+  return $.ajax({
+    method: 'PATCH',
+    url: app.host + '/change-password/' + app.user.id,
+    headers: {
+      Authorization: 'Token token=' + app.user.token
+    },
+    data: {
+      'passwords': {
+        'old': data.credentials.old,
+        'new': data.credentials.new
+      }
+    }
+  })
+}
+
+const create = function(data) {
   return $.ajax({
     method: 'POST',
     url: app.host + '/games/',
@@ -59,7 +68,7 @@ const create = function (data) {
   })
 }
 
-const updateMoves = function (index, value, over) {
+const updateMoves = function(index, value, over) {
   return $.ajax({
     url: app.host + '/games/' + app.game.id,
     method: 'PATCH',
@@ -69,21 +78,20 @@ const updateMoves = function (index, value, over) {
     data: {
       'game': {
         'cell': {
-          'index': data.index,
-          'value': data.value
+          'index': index,
+          'value': value
         },
-        'over': data.over
+        'over': over
       }
     }
   })
 }
-// Games history
-const gameView = function () {
+
+const gameView = function() {
   // console.log(app.user.token)
-  // alert('test')
   return $.ajax({
+    url: app.host + '/games',
     method: 'GET',
-    url: app.host + 'games/',
     headers: {
       Authorization: 'Token token=' + app.user.token
     }
